@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  const API_URL = "https://forja-backend-mercadopago.onrender.com";
+
   const botones = document.querySelectorAll('.btn-rutina');
   const modal = document.getElementById('modal-compra');
   const cerrar = document.querySelector('.cerrar-modal');
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnPagar.addEventListener('click', async () => {
     try {
-      const res = await fetch('/crear-preferencia', {
+      const res = await fetch(`${API_URL}/crear-preferencia`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ rutina: titulo.textContent })
@@ -37,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (err) {
       console.error(err);
+      alert("Error al iniciar el pago");
     }
   });
 

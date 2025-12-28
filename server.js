@@ -1,13 +1,18 @@
 const express = require('express');
+const cors = require('cors');
 const { MercadoPagoConfig, Preference } = require('mercadopago');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 /* Middleware */
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"]
+}));
+
 app.use(express.json());
-app.use(express.static('public'));
 
 /* Mercado Pago */
 const client = new MercadoPagoConfig({
@@ -35,10 +40,11 @@ app.post('/crear-preferencia', async (req, res) => {
           currency_id: 'ARS'
         }],
         back_urls: {
-          success: 'https://TU-DOMINIO/success.html',
-          failure: 'https://TU-DOMINIO/failure.html',
-          pending: 'https://TU-DOMINIO/pending.html'
+          success: 'https://forjatraining.com/success.htm',
+          failure: 'https://forjatraining.com/failure.html',
+          pending: 'https://forjatraining.com/pending.html'
         },
+        
         auto_return: 'approved'
       }
     });
