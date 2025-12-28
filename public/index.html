@@ -1,0 +1,159 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORJA TRAINING</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+          <a href="#">
+            <img src="imagenes/prueba.jpeg" alt="FORJA TRAINING Logo">
+          </a>
+        </div>
+      
+        <button class="menu-toggle">☰</button>
+      
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="entrenamientos.html">Tipos de entrenamiento</a></li>
+            <li><a href="tutorial.html">Tutorial de Rutinas</a></li>
+            <li><a href="contacto.html">Personalizado</a></li>
+          </ul>
+        </nav>
+      </header>
+
+  <!-- Historia -->
+ <section id="historia">
+
+  <!-- VIDEO -->
+  <div class="historia-video">
+    <video autoplay muted loop playsinline>
+      <source src="imagenes/Celina Leiva schenk.mp4" type="video/mp4">
+      Tu navegador no soporta video HTML5.
+    </video>
+  </div>
+
+  <h2>Mi Historia</h2>
+
+  <div class="historia">
+    <p><strong>Soy Celina Leiva Schenk, entrenadora personal, preparadora física y fundadora de FORJA TRAINING.</strong></p>
+
+    <p>Desde el año 2019 dedico mi vida al entrenamiento, la técnica y la fuerza, trabajando en gimnasios, clubes y también como atleta de powerlifting.</p>
+
+    <p>Creo profundamente en que el entrenamiento es mucho más que una rutina: es una forma de formar carácter, disciplina y confianza. Por eso nació Forja Training, un espacio creado para quienes sienten que el deporte y el entrenamiento no es solo un hábito, sino parte de su identidad.</p>
+
+    <p>En Forja, acompaño a atletas que buscan superarse, que entrenan con propósito y pasión. Cada plan está diseñado con personalización y precisión técnica, porque cada cuerpo y cada mente tienen un potencial distinto que merece ser forjado.</p>
+
+    <br>
+    <p>Mi misión es desafiarte a ir más allá de tus límites, motivarte a creer en tu fuerza y ayudarte a construir una versión de vos que te haga sentir invencible dentro y fuera del gimnasio.</p>
+
+    <br></p>
+    <p><strong>Forja Training — forjando atletas con propósito.</strong></p>
+  </div>
+
+</section>
+
+
+  <!-- Tipos de entrenamiento -->
+  <section id="tipos">
+  <h2>Tipos de Entrenamiento</h2>
+
+  <div class="tipos">
+
+    <div class="tipo">
+      <div class="flip-card">
+        <div class="flip-front">
+          <img src="imagenes/1.jpeg">
+          <h3>FORJADOR</h3>
+        </div>
+        <div class="flip-back">
+          <h3>FORJADOR</h3>
+             <p>Entrenamiento de fuerza y técnica con cargas.</p>
+        <a href="entrenamientos.html#FORJADOR" class="btn-ver-mas">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tipo">
+      <div class="flip-card">
+        <div class="flip-front">
+          <img src="imagenes/3.jpeg">
+          <h3>CENTELLA</h3>
+        </div>
+        <div class="flip-back">
+          <h3>CENTELLA</h3>
+          <p>Rutinas aeróbicas que aumentan tu ritmo cardíaco, mejoran tu resistencia y queman calorías.</p>
+          <a href="entrenamientos.html#CENTELLA" class="btn-ver-mas">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tipo">
+      <div class="flip-card">
+        <div class="flip-front">
+          <img src="imagenes/2.jpeg">
+          <h3>CAZADOR</h3>
+        </div>
+        <div class="flip-back">
+          <h3>CAZADOR</h3>
+          <p>Sesiones para mejorar la velocidad, potencia y explosividad.</p>
+          <a href="entrenamientos.html#CAZADOR" class="btn-ver-mas">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tipo">
+      <div class="flip-card">
+        <div class="flip-front">
+          <img src="imagenes/4.jpeg">
+          <h3>GUARDIAN</h3>
+        </div>
+        <div class="flip-back">
+          <h3>GUARDIAN</h3>
+          <p>Tu core será tan fuerte como tu mente.</p>
+          <a href="entrenamientos.html#GUARDIAN" class="btn-ver-mas">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <footer>
+  <p>© FORJA TRAINING</p>
+    <p>2026 | Axel Rista | Diseño Web</p>
+  <div class="redes">
+    <a href="https://www.instagram.com/celinaleivaschenk.pf" target="_blank" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17" cy="7" r="1"/>
+      </svg>
+    </a>
+  </div>
+</footer>
+  
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('mostrar');
+    }
+  </script>
+  <script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+</script>
+
+</body>
+</html>

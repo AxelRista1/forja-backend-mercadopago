@@ -1,0 +1,291 @@
+
+  <html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORJA TRAINING</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+     <header>
+        <div class="logo">
+          <a href="index.html">
+            <img src="imagenes/prueba.jpeg" alt="FORJA TRAINING Logo">
+          </a>
+        </div>
+      
+        <button class="menu-toggle">☰</button>
+      
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="entrenamientos.html">Tipos de entrenamiento</a></li>
+            <li><a href="tutorial.html">Tutorial de Rutinas</a></li>
+            <li><a href="contacto.html">Personalizado</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      
+
+    <section class="contacto-wsp">
+  <h2>Forjá tu plan personalizado</h2>
+  <p>Completá estos datos y te contactaremos por correo</p>
+
+  <form id="form-wsp">
+
+    <!-- ===============================
+         DATOS BÁSICOS
+    ================================ -->
+    <h3>Datos básicos</h3>
+
+    <input type="text" id="nombre" placeholder="Nombre y apellido" required>
+    <input type="number" id="edad" placeholder="Edad" required>
+    <input type="email" id="email" placeholder="Email de contacto" required>
+    <input type="text" id="whatsapp" placeholder="WhatsApp (opcional)">
+    <input type="text" id="ubicacion" placeholder="País / Ciudad" required>
+
+    <!-- ===============================
+         EXPERIENCIA
+    ================================ -->
+    <h3>Tu experiencia y contexto</h3>
+
+    <div class="bloque">
+      <p>¿Entrenás actualmente?</p>
+      <div class="opciones">
+        <label>
+          <input type="radio" name="entrena" value="Sí, de forma regular" required>
+          <span>Sí, de forma regular</span>
+        </label>
+        <label>
+          <input type="radio" name="entrena" value="Sí, pero de manera irregular">
+          <span>Sí, pero de manera irregular</span>
+        </label>
+        <label>
+          <input type="radio" name="entrena" value="No, estoy retomando">
+          <span>No, estoy retomando</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="bloque">
+      <p>¿Hace cuánto tiempo entrenás (o entrenaste)?</p>
+      <div class="opciones">
+        <label>
+          <input type="radio" name="tiempo" value="Menos de 6 meses" required>
+          <span>Menos de 6 meses</span>
+        </label>
+        <label>
+          <input type="radio" name="tiempo" value="6 meses a 2 años">
+          <span>6 meses a 2 años</span>
+        </label>
+        <label>
+          <input type="radio" name="tiempo" value="Más de 2 años">
+          <span>Más de 2 años</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- ===============================
+         SALUD
+    ================================ -->
+    <h3>Salud y antecedentes</h3>
+
+    <textarea
+      id="lesion"
+      placeholder="¿Tenés o tuviste alguna lesión, molestia o limitación física?"
+    ></textarea>
+
+    <!-- ===============================
+         OBJETIVO
+    ================================ -->
+    <h3>Objetivo principal</h3>
+
+    <div class="bloque">
+      <p>¿Qué buscás trabajar principalmente?</p>
+      <div class="opciones">
+        <label>
+          <input type="checkbox" value="Fuerza">
+          <span>Fuerza</span>
+        </label>
+        <label>
+          <input type="checkbox" value="Resistencia">
+          <span>Resistencia</span>
+        </label>
+        <label>
+          <input type="checkbox" value="Core / estabilidad">
+          <span>Core / estabilidad</span>
+        </label>
+        <label>
+          <input type="checkbox" value="Rendimiento deportivo">
+          <span>Rendimiento deportivo</span>
+        </label>
+        <label>
+          <input type="checkbox" value="Volver a entrenar con confianza">
+          <span>Volver a entrenar con confianza</span>
+        </label>
+      </div>
+    </div>
+
+
+    <!-- ===============================
+         DISPONIBILIDAD
+    ================================ -->
+    <h3>Disponibilidad</h3>
+
+    <div class="bloque">
+      <p>¿Cuántos días por semana podés entrenar?</p>
+      <div class="opciones">
+        <label>
+          <input type="radio" name="dias" value="2 días" required>
+          <span>2 días</span>
+        </label>
+        <label>
+          <input type="radio" name="dias" value="3 días">
+          <span>3 días</span>
+        </label>
+        <label>
+          <input type="radio" name="dias" value="5 días o más">
+          <span>5 días</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="bloque">
+      <p>¿Dónde entrenás habitualmente?</p>
+      <div class="opciones">
+        <label>
+          <input type="radio" name="lugar" value="Gimnasio" required>
+          <span>Gimnasio</span>
+        </label>
+        <label>
+          <input type="radio" name="lugar" value="Casa">
+          <span>Casa</span>
+        </label>
+        <label>
+          <input type="radio" name="lugar" value="Ambos">
+          <span>Ambos</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="bloque">
+      <p>¿Cómo describirías tu nivel de energía y motivación hoy?</p>
+      <div class="opciones">
+        <label>
+          <input type="radio" name="energia" value="Baja" required>
+          <span>Baja</span>
+        </label>
+        <label>
+          <input type="radio" name="energia" value="Media">
+          <span>Media</span>
+        </label>
+        <label>
+          <input type="radio" name="energia" value="Alta">
+          <span>Alta</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- ===============================
+         EXTRA
+    ================================ -->
+    <h3>Información adicional</h3>
+
+    <textarea
+      id="extra"
+      placeholder="¿Hay algo más que deba saber para ayudarte mejor?"
+    ></textarea>
+
+    <button type="submit">👉 Forjar mi plan personalizado</button>
+  </form>
+</section>
+
+
+
+  <footer>
+  <p>© FORJA TRAINING</p>
+    <p>2026 | Axel Rista | Diseño Web</p>
+  <div class="redes">
+    <a href="https://www.instagram.com/celinaleivaschenk.pf" target="_blank" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17" cy="7" r="1"/>
+      </svg>
+    </a>
+  </div>
+</footer>
+  
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('mostrar');
+    }
+  </script>
+  <script>
+document.getElementById("form-wsp").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const nombre = document.getElementById("nombre").value;
+  const edad = document.getElementById("edad").value;
+  const email = document.getElementById("email").value;
+  const whatsapp = document.getElementById("whatsapp").value || "No informado";
+  const ubicacion = document.getElementById("ubicacion").value;
+  const lesion = document.getElementById("lesion").value || "Ninguna";
+  const extra = document.getElementById("extra").value || "Nada adicional";
+
+  const getRadio = name =>
+    document.querySelector(`input[name="${name}"]:checked`)?.value || "No especificado";
+
+  const objetivos = [];
+  document.querySelectorAll('input[type="checkbox"]:checked')
+    .forEach(o => objetivos.push(o.value));
+
+  const destinatario = "celinaleivaschenk@gmail.com"; // 👈 TU MAIL
+  const asunto = "Nuevo plan personalizado - FORJA TRAINING";
+
+  const mensaje = `
+Nuevo contacto desde la web
+
+Nombre: ${nombre}
+Edad: ${edad}
+Email: ${email}
+WhatsApp: ${whatsapp}
+Ubicación: ${ubicacion}
+
+Entrena actualmente: ${getRadio("entrena")}
+Experiencia: ${getRadio("tiempo")}
+Lesiones: ${lesion}
+
+Objetivos: ${objetivos.join(", ") || "No especificados"}
+
+Días por semana: ${getRadio("dias")}
+Lugar: ${getRadio("lugar")}
+Energía/motivación: ${getRadio("energia")}
+
+Extra: ${extra}
+`;
+
+  const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${destinatario}&su=${encodeURIComponent(asunto)}&body=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+});
+</script>
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+</script>
+
+  
+</body>
+</html>
