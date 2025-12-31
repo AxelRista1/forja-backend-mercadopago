@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const { MercadoPagoConfig, Preference } = require("mercadopago");
 require("dotenv").config();
 
@@ -13,6 +14,9 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+/* ================= SERVIR PDFs ================= */
+app.use("/pdf", express.static(path.join(__dirname, "pdf")));
 
 /* ================= MERCADO PAGO ================= */
 const client = new MercadoPagoConfig({
@@ -29,10 +33,14 @@ app.get("/", (req, res) => {
 /* ================= CREAR PREFERENCIA ================= */
 app.post("/crear-preferencia", async (req, res) => {
   try {
-    const { titulo, precio } = req.body;
+    const { titulo, precio, rutina } = req.body;
 
     if (!precio || isNaN(precio)) {
       return res.status(400).json({ error: "Precio inválido" });
+    }
+
+    if (!rutina) {
+      return res.status(400).json({ error: "Rutina no especificada" });
     }
 
     const result = await preference.create({
@@ -46,7 +54,7 @@ app.post("/crear-preferencia", async (req, res) => {
           }
         ],
         back_urls: {
-          success: "https://forjatraining.com/success.html",
+          success: `https://forjatraining.com/success.html?rutina=${encodeURIComponent(rutina)}`,
           failure: "https://forjatraining.com/failure.html",
           pending: "https://forjatraining.com/pending.html"
         },
