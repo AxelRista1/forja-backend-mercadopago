@@ -1,63 +1,77 @@
-const express = require('express');
-const cors = require('cors');
-const { MercadoPagoConfig, Preference } = require('mercadopago');
-require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const { MercadoPagoConfig, Preference } = require("mercadopago");
 
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-/* Middleware */
-app.use(cors({
-  origin: "*",
-  methods: ["GET", "POST"]
-}));
-
+/* =======================
+   MIDDLEWARES
+======================= */
+app.use(cors());
 app.use(express.json());
 
-/* Mercado Pago */
+/* =======================
+   MERCADO PAGO PROD
+======================= */
 const client = new MercadoPagoConfig({
-  accessToken: process.env.MP_ACCESS_TOKEN
+  accessToken: process.env.MP_ACCESS_TOKEN,
 });
 
 const preference = new Preference(client);
 
-/* Health check */
-app.get('/', (req, res) => {
-  res.send('Servidor funcionando 🚀');
-});
+/* =======================
+   FRONTEND (SIN PUBLIC)
+======================= */
+app.use(express.static(__dirname));
 
-/* Crear preferencia */
-app.post('/crear-preferencia', async (req, res) => {
-  const { rutina } = req.body;
-
+/* =======================
+   CREAR PREFERENCIA
+======================= */
+app.post("/crear-preferencia", async (req, res) => {
   try {
     const result = await preference.create({
       body: {
-        items: [{
-          title: `Rutina ${rutina}`,
-          quantity: 1,
-          unit_price: 3500,
-          currency_id: 'ARS'
-        }],
+        items: [
+          {
+            title: "Plan de Entrenamiento FORJA",
+            quantity: 1,
+            currency_id: "ARS",
+            unit_price: 1000,
+          },
+        ],
         back_urls: {
-          success: 'https://forjatraining.com/success.htm',
-          failure: 'https://forjatraining.com/failure.html',
-          pending: 'https://forjatraining.com/pending.html'
+          success: "https://forjatraining.com/success.html",
+          failure: "https://forjatraining.com/failure.html",
+          pending: "https://forjatraining.com/pending.html",
         },
-        
-        auto_return: 'approved'
-      }
+        auto_return: "approved",
+      },
     });
 
-    res.json({ init_point: result.body.init_point });
-
+    res.json({
+      init_point: result.init_point,
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error Mercado Pago' });
+    console.error("Error Mercado Pago:", error);
+    res.status(500).json({
+      error: "Error al crear la preferencia",
+      detalle: error.message,
+    });
   }
 });
 
-/* Server */
+/* =======================
+   SPA FALLBACK
+======================= */
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+/* =======================
+   START SERVER
+======================= */
 app.listen(PORT, () => {
   console.log(`Servidor activo en puerto ${PORT}`);
 });
