@@ -15,8 +15,20 @@ app.use(cors({
 
 app.use(express.json());
 
-/* ================= SERVIR PDFs ================= */
+/* ================= SERVIR PDFs (para abrirlos) ================= */
 app.use("/pdf", express.static(path.join(__dirname, "pdf")));
+
+/* ================= DESCARGA FORZADA ================= */
+app.get("/descargar/:file", (req, res) => {
+  const filePath = path.join(__dirname, "pdf", req.params.file);
+
+  res.download(filePath, err => {
+    if (err) {
+      console.error("Error descarga:", err);
+      res.status(404).send("Archivo no encontrado");
+    }
+  });
+});
 
 /* ================= MERCADO PAGO ================= */
 const client = new MercadoPagoConfig({
@@ -62,9 +74,7 @@ app.post("/crear-preferencia", async (req, res) => {
       }
     });
 
-    res.json({
-      init_point: result.init_point
-    });
+    res.json({ init_point: result.init_point });
 
   } catch (error) {
     console.error("Error Mercado Pago:", error);
