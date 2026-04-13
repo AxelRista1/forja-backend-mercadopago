@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
   res.json({ status: "OK", message: "Backend Mercado Pago activo 🚀" });
 });
 
-/* ================= CREAR PREFERENCIA ================= */
+/* ================= CREAR PREFERENCIA (VERSIÓN ANTERIOR) ================= */
 app.post("/crear-preferencia", async (req, res) => {
   try {
     const { titulo, precio, rutina } = req.body;
@@ -66,11 +66,9 @@ app.post("/crear-preferencia", async (req, res) => {
           }
         ],
 
-        // 🔥 CLAVE: esto guarda la rutina correctamente
-        external_reference: rutina,
-
+        // 🔥 VOLVEMOS A PASAR LA RUTINA POR URL
         back_urls: {
-          success: "https://forjatraining.com/success.html",
+          success: `https://forjatraining.com/SUCCESS.HTM?rutina=${encodeURIComponent(rutina)}`,
           failure: "https://forjatraining.com/failure.html",
           pending: "https://forjatraining.com/pending.html"
         },
