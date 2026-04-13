@@ -15,7 +15,7 @@ app.use(cors({
 
 app.use(express.json());
 
-/* ================= SERVIR PDFs (para abrirlos) ================= */
+/* ================= SERVIR PDFs ================= */
 app.use("/pdf", express.static(path.join(__dirname, "pdf")));
 
 /* ================= DESCARGA FORZADA ================= */
@@ -65,11 +65,16 @@ app.post("/crear-preferencia", async (req, res) => {
             currency_id: "ARS"
           }
         ],
+
+        // 🔥 CLAVE: esto guarda la rutina correctamente
+        external_reference: rutina,
+
         back_urls: {
-          success: `https://forjatraining.com/success.html?rutina=${encodeURIComponent(rutina)}`,
+          success: "https://forjatraining.com/success.html",
           failure: "https://forjatraining.com/failure.html",
           pending: "https://forjatraining.com/pending.html"
         },
+
         auto_return: "approved"
       }
     });
