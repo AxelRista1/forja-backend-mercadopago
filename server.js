@@ -89,3 +89,106 @@ app.post("/crear-preferencia", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor activo en puerto ${PORT}`);
 });
+
+  
+
+
+
+
+
+
+/* =========================================================
+   CREAR PREFERENCIA — DONACIÓN CUIDEMOS LO NUESTRO
+========================================================= */
+
+app.post("/crear-preferencia-donacion", async (req, res) => {
+
+  try {
+
+    const { precio } = req.body;
+
+    /* ================= VALIDAR MONTO ================= */
+
+    if (!precio || isNaN(precio)) {
+
+      return res.status(400).json({
+        error: "Monto de donación inválido"
+      });
+
+    }
+
+    const monto = Number(precio);
+
+    if (monto < 10) {
+
+      return res.status(400).json({
+        error: "El monto mínimo de donación es de $10"
+      });
+
+    }
+
+
+    /* ================= CREAR PREFERENCIA ================= */
+
+    const result = await preference.create({
+
+      body: {
+
+        items: [
+
+          {
+            title: "Donación - Cuidemos lo Nuestro",
+            quantity: 1,
+            unit_price: monto,
+            currency_id: "ARS"
+          }
+
+        ],
+
+        /* ================= URLS DE RETORNO ================= */
+
+        back_urls: {
+
+          success:
+            "https://pf-axelrista.netlify.app/donacion-exitosa.html",
+
+          failure:
+            "https://pf-axelrista.netlify.app/donacion-error.html",
+
+          pending:
+            "https://pf-axelrista.netlify.app/donacion-pendiente.html"
+
+        },
+
+        auto_return: "approved"
+
+      }
+
+    });
+
+
+    /* ================= RESPUESTA ================= */
+
+    res.json({
+
+      init_point: result.init_point
+
+    });
+
+
+  } catch (error) {
+
+    console.error(
+      "Error Mercado Pago - Donación:",
+      error
+    );
+
+    res.status(500).json({
+
+      error: "Error al crear la donación"
+
+    });
+
+  }
+
+});
